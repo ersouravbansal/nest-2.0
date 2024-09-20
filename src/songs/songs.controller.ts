@@ -36,7 +36,10 @@ export class SongsController {
   }
   @Get(':id')
   findOne(
-    @Param('id', new ParseIntPipe())
+    @Param(
+      'id',
+      new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
+    )
     id: number,
   ) {
     return `fetch song with ${id} endpoint`;
